@@ -1,0 +1,57 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0c0120;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Poppins";
+
+}
+
+
+/* precisa enfatizar no button a font para ela funcionar */
+button{
+    font-family: "Poppins", sans-serif;
+}
+
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 4vw;
+    position: absolute;
+    z-index: 9;
+    
+}
+
+.hero {
+    background-image: url("img/hero.webp");
+    background-position: 50% 0%;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7vw;
+    
+    .esquerda {
+        background-color: green;
+        width: 30%;
+
+        h3{
+            font-size: 20px;
+
+        }
+
+
+    }
+
+}
+
+
+
