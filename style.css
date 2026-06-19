@@ -35,6 +35,25 @@ header{
     
 }
 
+section {
+    width: 100%;
+    display: flex;
+    padding: 7vw;
+}
+
+button{
+            background-color: transparent;
+            color: white;
+            font-size: 16px;
+            display:flex;
+            gap: 12px;
+            border: none;
+            outline: none;
+            padding: 16px 0px;
+            border-bottom: 1px solid white;
+
+        }
+
 .hero {
     background-image: url("img/hero.webp");
     background-position: 50% 0%;
@@ -82,20 +101,57 @@ header{
             margin-bottom: 32px;
 
         }
-        button{
-            background-color: transparent;
-            color: white;
-            font-size: 16px;
-            display:flex;
-            gap: 12px;
-            border: none;
-            outline: none;
-            padding: 16px 0px;
-            border-bottom: 1px solid white;
-
-        }
+        
     }
 
+}
+
+.secaoCidade {
+    flex-direction: column;
+
+    .tituloCidade {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2{
+            font-size: 40px;
+        }
+
+        
+    }
+    
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 52;
+    
+            .card{
+            background-image: url("img/card1.webp");
+            width: 32%;
+            aspect-ratio: 16/9;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            padding: 20px;
+
+        }
+
+        .card:nth-child(2){
+            background-image: url("img/card2.webp");
+        }
+
+        .card:nth-child(3){
+            background-image: url("img/card3.webp");
+        }
+
+
+            
+    
+     } 
+    
 }
 
 
