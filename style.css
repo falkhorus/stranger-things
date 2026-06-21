@@ -35,24 +35,40 @@ header{
     
 }
 
+ul{
+    list-style-type: none;
+}
+
 section {
     width: 100%;
     display: flex;
     padding: 7vw;
 }
 
-button{
-            background-color: transparent;
-            color: white;
-            font-size: 16px;
-            display:flex;
-            gap: 12px;
-            border: none;
-            outline: none;
-            padding: 16px 0px;
-            border-bottom: 1px solid white;
+h2{
+    font-size: 40px;
+}
 
-        }
+button{
+    
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    display:flex;
+    gap: 12px;
+    border: none;
+    outline: none;
+    padding: 16px 0px;
+    border-bottom: 1px solid white;
+}
+
+.bgMonstro{
+    background-image: url("img/bg-sec2.webp");
+    background-position: center;
+    background-size: cover;
+}
+
+
 
 .hero {
     background-image: url("img/hero.webp");
@@ -114,9 +130,7 @@ button{
         justify-content: space-between;
         align-items: center;
 
-        h2{
-            font-size: 40px;
-        }
+        
 
         
     }
@@ -174,6 +188,23 @@ button{
     }
 
 
+}
+
+.secaoObrigado{
+    
+    flex-direction: column;
+
+
+    h2{
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    ul{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
 }
 
 
