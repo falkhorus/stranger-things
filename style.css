@@ -13,7 +13,7 @@
 
 
 body {
-    background-color: #0c0120;
+    background-color: #0C0102;
     color: rgba(255, 255, 255, 0.9);
     font-family: "Poppins";
 
@@ -152,6 +152,28 @@ button{
     
      } 
     
+}
+
+.secaoDepoimentos {
+    flex-direction: column;
+
+    .logotipos{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .depoimentos{
+        margin-top: 62px;
+        display: flex;
+        justify-content: space-between;
+
+        .depoimento{
+            width: 31%;
+        }
+
+    }
+
+
 }
 
 
