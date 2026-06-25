@@ -140,6 +140,7 @@ button{
         display: flex;
         justify-content: space-between;
         margin-top: 52;
+        padding-top: 1%;
     
             .card{
             background-image: url("img/card1.webp");
@@ -292,5 +293,26 @@ footer{
 @keyframes textoInfinito {
     100% {
         transform: translateX(-100%)
+    }
+}
+
+
+
+
+/* MEDIA QUERIES - RESPONSIVIDADE */
+
+@media (max-width: 1500px) {
+    .secaoCidade {
+        padding: 4vw;
+    }
+
+}
+
+@media (max-width: 1400px) {
+    .secaoCidade .cards .card {
+        flex-direction: column;
+        align-items: start;
+        justify-content: end;
+
     }
 }
