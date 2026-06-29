@@ -192,20 +192,41 @@ button{
 
 }
 
-.secaoObrigado{
-    
+.secaoObrigado {
+    /* Para o flex-direction funcionar corretamente */
+    display: flex; 
     flex-direction: column;
+    overflow: hidden; /* Evita que o site crie uma barra de rolagem horizontal */
+    width: 100%;
 
-
-    h2{
+    h2 {
         text-align: center;
         margin-bottom: 40px;
     }
 
-    ul{
-        display: flex;
-        justify-content: space-between;
+    .tabelaInfinita {
+        display: flex; /* Coloca as duas ULs lado a lado */
         width: 100%;
+    }
+
+    ul {
+        display: flex;
+        flex-shrink: 0; /* Impede que a lista esprema os itens para caber na tela */
+        min-width: 100%;
+        justify-content: space-around;
+        gap: 30px; /* Define um espaço uniforme entre as cidades */
+        animation: tabelaInfinita 15s infinite linear;
+        
+    }
+}
+
+@keyframes tabelaInfinita {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Move a lista exatamente 100% do seu próprio tamanho */
+        transform: translateX(-100%);
     }
 }
 
@@ -412,8 +433,18 @@ footer{
 
             }
         }
+
     }
 
+    .secaoObrigado {
+        h2 {
+            text-align: center;
+        }
+        ul {
+            width: max-content;
+            gap: 32px;
+        }
+    }
 
     
 } 
