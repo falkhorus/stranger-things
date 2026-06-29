@@ -391,5 +391,29 @@ footer{
 
     }   
 
+    .secaoDepoimentos {
+        .logotipos {
+            img:nth-child(1), img:nth-child(3) {
+                width: 20%;
+            }
+
+            img:nth-child(2){
+                width: 40%;
+            }
+
+        }
+        .depoimentos {
+            flex-direction: column;
+            gap: 48px;
+
+
+            .depoimento {
+                width: 100%;
+
+            }
+        }
+    }
+
+
     
 } 

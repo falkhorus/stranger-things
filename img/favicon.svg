@@ -1,0 +1,24 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Efeito de brilho vermelho -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <rect width="100" height="100" fill="black" />
+  
+  <!-- Letra S estilizada (Serifada) -->
+  <text x="50%" y="75%" 
+        font-family="serif" 
+        font-size="85" 
+        font-weight="bold" 
+        fill="#E21F26" 
+        text-anchor="middle" 
+        filter="url(#glow)"
+        style="text-shadow: 0 0 5px #E21F26;">
+    S
+  </text>
+</svg>
+
