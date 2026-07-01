@@ -20,6 +20,17 @@
     <main>
         <!-- SEÇÃO HERO -->
         <section class="hero">
+            <!-- picture é um jeito mais profissional de renderizar imagens a partir de dispositivos
+            mobile, PC etc. -->
+            <picture>
+                <source media="(max-width: 600px )" srcset="img/bg1-mobile.webp">
+                <img src="img/bg-1.webp" alt="">
+            </picture>
+            <picture>
+                <source media="(max-width: 600px )" srcset="img/bg2-mobile.webp">
+                <img src="img/bg-2.webp" alt="">
+            </picture>
+            
             <div class="esquerda">
                 <h3>THE EXPERIENCE</h3>
                 <h1>STRANGER THINGS</h1>
@@ -27,8 +38,8 @@
             <div class="direita">
                 <p>Descubra os seus poderes e vire o herói da sua própria aventura!</p>
                 
-                <button>
-                    ESCOLHA SUA CIDADE
+                <button class="botaoAssistir">
+                    ASSISTIR NOSSOS VÍDEOS
                     <img src="img/seta-botao.svg" alt="seta botão">
                 </button>
             </div>

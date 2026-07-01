@@ -74,7 +74,7 @@ button{
 
 
 .hero {
-    background-image: url("img/hero.webp");
+    
     background-position: 50% 0%;
     width: 100%;
     height: 100vh;
@@ -83,7 +83,37 @@ button{
     align-items: center;
     justify-content: space-between;
     padding: 0vw 7vw 7vw 7vw;
+    position: relative;
+
+    picture {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+
+        }
+
+
+    }
+
     
+
+    
+    
+
+    .esquerda, .direita {
+        z-index: 9;
+
+    }
+
     .esquerda {
         
         width: 30%;
@@ -123,6 +153,20 @@ button{
         
     }
 
+    
+
+}
+
+/*  CSS avançado, cria uma div com degradê */
+.hero::before {   
+    content: "";
+    background: linear-gradient(180deg, rgba(12, 1, 2, 0) 60%, #0C0102 100%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9;
+    left: 0;
+    top: 0;
 }
 
 .secaoCidade {
