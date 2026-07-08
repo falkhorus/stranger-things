@@ -1,0 +1,3 @@
+// Usar Gsap para fazer: SCROLL SUAVE => ANIMAÇÕES => ANIMAÇÕES COM ROLAGEM => ANIMAÇÕES NO TEXTO
+
+
