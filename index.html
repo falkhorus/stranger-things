@@ -12,7 +12,14 @@
 </head>
 
 <body>
-    <header>
+
+
+    <!-- DIVS PARA SCROLLSMOOTHER -->
+
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+
+     <header>
         <h2>GC.</h2>
         <img src="img/netflix.svg" alt="logo da netflix">
     </header>
@@ -22,7 +29,7 @@
         <section class="hero">
             <!-- picture é um jeito mais profissional de renderizar imagens a partir de dispositivos
             mobile, PC etc. -->
-            <picture>
+            <picture data-speed=".6">
                 <source media="(max-width: 600px )" srcset="img/bg1-mobile.webp">
                 <img src="img/bg-1.webp" alt="">
             </picture>
@@ -195,7 +202,7 @@
 
                         
                     
-                </div>
+                
             </div> 
             
             
@@ -210,14 +217,20 @@
             <img src="img/netflix-logo.svg" alt="logo da netflix">
             <img src="img/fever-logo.svg" alt="logo da fever">
                                 
-        </div>
+         </div>
 
                 <div class="textoInfinito">
                 <h3>THE EXPERIENCE</h3>
                 <h3>THE EXPERIENCE</h3>
                 <h3>THE EXPERIENCE</h3>
                 </div>                        
-    </footer>
+    </footer>           
+
+        </div>
+    </div>
+
+
+
     <!-- Para vincular o gsap -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
     <!-- ScrollSmoother requires ScrollTrigger -->
