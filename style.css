@@ -414,6 +414,9 @@ footer{
         font-size: 28px;
     }
 
+
+    
+
     .hero {
         flex-direction: column;
         padding: 26% 4vw 0;
@@ -456,7 +459,7 @@ footer{
     }
 
     .secaoCidade {
-        margin-top: 80px;
+        margin-top: 0px;
         button {
             display: none;
         }
