@@ -247,6 +247,10 @@ button{
     flex-direction: column;
     overflow: hidden; /* Evita que o site crie uma barra de rolagem horizontal */
     width: 100%;
+    z-index: 2;
+    position: relative;
+    background-color: #0C0102;
+
 
     h2 {
         text-align: center;
