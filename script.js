@@ -55,6 +55,7 @@ gsap.from(".card", {
 
 // ANIMAÇÕES FOOTER
 
+
 gsap.from("footer", {  
     y: "-30%",                  // O Y negativo faz a animação subir e o positivo descer
     immediateRender: false,     // O immediateRender: false faz com que a animação só seja executada quando o scroll chegar no footer
@@ -66,3 +67,21 @@ gsap.from("footer", {
         end: "100% 100%"            // O end: "100% 100%" faz com que a animação seja executada até o final do footer, ou seja, quando o scroll chegar no final do footer.
     }
 })
+
+
+// ANIMAÇÕES LETRAS
+
+const split = SplitText.create(".textoSplit", {
+    type: "lines, words, chars",
+    mask: "lines"
+})
+
+gsap.from(split.chars, {
+    y: 40, 
+    opacity: 0,
+    stagger: .03,
+    duration: .3
+})
+
+
+
