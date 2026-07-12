@@ -47,7 +47,7 @@ gsap.from(".card", {
         // markers: true,
         start: "0% 75%",
         end: "100% 70%",
-        scrub: true
+        scrub: true  // O scrub: true faz com que a animação seja executada de acordo com o scroll, ou seja, se o scroll estiver no meio da animação, a animação também estará no meio.
 
     }
     
@@ -71,17 +71,33 @@ gsap.from("footer", {
 
 // ANIMAÇÕES LETRAS
 
-const split = SplitText.create(".textoSplit", {
-    type: "lines, words, chars",
-    mask: "lines"
-})
+//SELECIONA TODOS OS ELEMENTOS DA PÁGINA QUE TEM A CLASSE .textoSplit
+const grupoTextoSplit = document.querySelectorAll(".textoSplit");
 
-gsap.from(split.chars, {
-    y: 40, 
-    opacity: 0,
-    stagger: .03,
-    duration: .3
-})
+// Para animar cada elemento desse grupamento -> ForEach
+
+grupoTextoSplit.forEach((textoUnicoSplit) => {
+
+    const split = SplitText.create(textoUnicoSplit, {
+        type: "lines, words, chars",
+        mask: "lines",
+    });
 
 
+
+    gsap.from(split.chars, {
+        y: 40, 
+        opacity: 0,
+        stagger: .03,
+        duration: .3,
+
+        scrollTrigger: {
+            trigger: textoUnicoSplit,
+            start: "0% 80%",
+            
+        }
+
+    });
+
+});
 
