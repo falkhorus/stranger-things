@@ -15,6 +15,8 @@ gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText);
 // através do ScrollSmoother que já reconhece esse atributo.
 
 
+function animarPagina(){
+
 // ANIMAÇÕES HERO
 
 gsap.from(".hero", {   // O From cria uma animação inicial e o TO cria para uma animação que já foi iniciada.
@@ -101,3 +103,32 @@ grupoTextoSplit.forEach((textoUnicoSplit) => {
 
 });
 
+}
+
+
+
+// PRELOADER -> CRIA TIMELINE
+
+const tl = gsap.timeline({
+    onComplete(){
+        animarPagina();
+        gsap.to("#preloader", {
+            opacity:0,
+            onComplete(){
+                gsap.to("#preloader", {
+                    display: "none"
+                })
+            }
+        })
+    }
+});
+
+tl.to("#preloader path", {
+    duration: 2.5,
+    strokeDashoffset: 0
+})
+
+tl.to ("#preloader path", {
+    fill: "rgb(168, 19, 19)", 
+    strokeDashoffset: 0
+})
