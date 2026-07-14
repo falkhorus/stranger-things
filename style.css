@@ -58,17 +58,44 @@ h2{
     font-size: 40px;
 }
 
-button{
-    
+button {
     background-color: transparent;
     color: white;
     font-size: 16px;
-    display:flex;
+    display: flex;
+    align-items: center; /* Alinha o texto e a seta perfeitamente na vertical */
     gap: 12px;
     border: none;
     outline: none;
-    padding: 16px 0px;
-    border-bottom: 1px solid white;
+    padding: 12px 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Borda inicial mais discreta */
+    cursor: pointer; 
+    
+    /* Transição de tempo para o hover*/
+    transition: color 1s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                border-color 1s cubic-bezier(0.25, 0.8, 0.25, 1),
+                text-shadow 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Garante que a imagem da seta transicione suavemente */
+button img {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                filter 0.3s ease;
+}
+
+/* EFEITO HOVER DO BOTÃO (Neon Vermelho & Seta Deslizante) */
+button:hover {
+    color: #E92A2D; /* Vermelho Stranger Things */
+    border-bottom-color: #E92A2D; /* Borda fica vermelha */
+    
+    /* Efeito de brilho neon nas letras (Text-Shadow) */
+    text-shadow: 0 0 8px rgba(233, 42, 45, 0.8), 
+                 0 0 20px rgba(233, 42, 45, 0.4);
+}
+
+button:hover img {
+    transform: translateX(8px); /* Seta empurra para a direita induzindo o clique */
+    filter: drop-shadow(0 0 5px #E92A2D); /* Seta também ganha um leve brilho vermelho */
 }
 
 
@@ -216,45 +243,129 @@ button{
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        
-
-        
     }
     
     .cards {
         display: flex;
         justify-content: space-between;
-        margin-top: 52;
+        margin-top: 52px; /* Corrigido */
         padding-top: 1%;
     
-            .card{
-            background-image: url("img/card1.webp");
+        .card {
             width: 32%;
             aspect-ratio: 16/9;
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: end;
             justify-content: space-between;
             padding: 20px;
-
+            
+            position: relative; 
+            overflow: hidden;   
+            z-index: 1;         
+            
+            border: 1px solid rgba(233, 42, 45, 0); /* Borda padrão invisível */
+            
+            /* Transição suave para a flutuação e borda do card */
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                        border-color 0.4s ease,
+                        box-shadow 0.4s ease;
         }
 
-        .card:nth-child(2){
+        /* 1. LAYER DA IMAGEM DE FUNDO (SOFRE O ZOOM) */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -2; /* Fica no fundo de tudo */
+            
+            /* Transição ultra suave para o efeito de Zoom */
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* 2. LAYER DO NEON E GRADIENTE (FICA POR CIMA DA IMAGEM, MAS ATRÁS DO TEXTO) */
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Fica acima da imagem (::before), mas abaixo do texto */
+            pointer-events: none; /* Impede que interfira nos cliques */
+            
+            /* Gradiente escuro na base para leitura do texto sempre ativo */
+            background: linear-gradient(180deg, rgba(12, 1, 2, 0) 50%, rgba(12, 1, 2, 0.95) 100%);
+            
+            /* Transição suave para a ativação do brilho neon vermelho */
+            transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Imagens de fundo aplicadas no ::before */
+        .card:nth-child(1)::before {
+            background-image: url("img/card1.webp");
+        }
+
+        .card:nth-child(2)::before {
             background-image: url("img/card2.webp");
         }
 
-        .card:nth-child(3){
+        .card:nth-child(3)::before {
             background-image: url("img/card3.webp");
         }
-
-
-            
-    
-     } 
-    
+    }
 }
+
+
+/* --- INTERAÇÃO DE HOVER (PASSAR O MOUSE) --- */
+
+/* Card flutua e ganha sombra projetada no chão e borda vermelha */
+.secaoCidade .cards .card:hover {
+    transform: translateY(-8px); 
+    border-color: rgba(218, 17, 20, 0.8); 
+    
+    /* Sombra escura no chão + um leve brilho vermelho ao redor do card (neon externo) */
+    box-shadow: 
+        0 15px 30px rgba(12, 1, 2, 0.8),
+        0 0 15px rgba(233, 42, 45, 0.2);
+}
+
+/* ZOOM APENAS NA IMAGEM (::before) */
+.secaoCidade .cards .card:hover::before {
+    transform: scale(1.12); 
+}
+
+/* O EFEITO NEON APARECE AQUI (::after) */
+.secaoCidade .cards .card:hover::after {
+    /* Duplo inset-shadow: um menor e mais forte, outro maior e difuso, criando o brilho neon realista */
+    box-shadow: 
+        inset 0 0 20px rgba(233, 42, 45, 0.7), /* Brilho neon interno concentrado nas bordas */
+        inset 0 0 45px rgba(233, 42, 45, 0.3); /* Brilho neon suave invadindo a imagem */
+}
+
+/* Transição suave nos textos internos */
+.secaoCidade .cards .card h3, 
+.secaoCidade .cards .card p {
+    position: relative;
+    z-index: 2; /* Garante que fiquem acima de todas as camadas de overlay */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                color 0.4s ease, 
+                text-shadow 0.4s ease;
+}
+
+/* Textos sobem levemente para acompanhar o movimento de flutuar */
+.secaoCidade .cards .card:hover h3,
+.secaoCidade .cards .card:hover p {
+    transform: translateY(-2px);
+}
+
+
+
+
 
 .secaoDepoimentos {
     flex-direction: column;
@@ -411,11 +522,41 @@ footer{
     
 } 
 
+
+
 @keyframes textoInfinito {
     100% {
         transform: translateX(-100%)
     }
 }
+
+
+/* ESTILIZAÇÃO DOS LINKS DAS REDES SOCIAIS */
+
+.logotiposFooter img,
+.secoesFooter .social ul li a img {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* 2. O EFEITO DE COR E BRILHO NO HOVER */
+.logotiposFooter img:hover,
+.secoesFooter .social ul li a:hover img {
+    
+    /* Faz o ícone subir/aumentar levemente */
+    transform: translateY(-4px) scale(1.05); 
+    
+    /* DESCRIÇÃO DE MUDANÇA DE COR: 
+       1. brightness(0) saturate(100%) transforma qualquer cor (branco/cinza) em Preto sólido.
+       2. O restante da fórmula converte o Preto exatamente no Vermelho #E92A2D.
+       3. O drop-shadow adiciona a aura neon ao redor. */
+    filter: brightness(0) saturate(100%) 
+            invert(26%) sepia(82%) saturate(5412%) hue-rotate(349deg) brightness(96%) contrast(98%) 
+            drop-shadow(0 0 8px rgba(233, 42, 45, 0.6));
+}
+
+
 
 
 
@@ -633,3 +774,4 @@ footer{
 
     
 } 
+
