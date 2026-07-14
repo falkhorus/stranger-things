@@ -3,16 +3,29 @@
 
 
 
-gsap.registerPlugin(ScrollTrigger,ScrollSmoother,SplitText);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
- ScrollSmoother.create({
+// 1. FORÇAR O SITE A INICIAR NO TOPO (Limpa a memória de scroll do navegador)
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
+// 2. CRIAR E PAUSAR O SCROLL SMOOTHER IMEDIATAMENTE
+const smoother = ScrollSmoother.create({
      smooth: 1.5,
      effects: true
- })
+});
+smoother.paused(true); // Pausa a rolagem do GSAP
+
 
 // Obs: Coloquei um atributo chamado data-speed na tag html
 //  picture para poder movimentar as imagens em paralax
 // através do ScrollSmoother que já reconhece esse atributo.
+
+
+
+
 
 
 function animarPagina(){
@@ -111,24 +124,34 @@ grupoTextoSplit.forEach((textoUnicoSplit) => {
 
 const tl = gsap.timeline({
     onComplete(){
+        // Remove a trava de scroll do CSS nativo
+        document.body.classList.remove("loading");
+        
+        // Libera o ScrollSmoother do GSAP para o usuário poder rolar a página
+        smoother.paused(false); 
+        
+        // Inicia as animações internas do site
         animarPagina();
+        
+        // Some com o preloader suavemente
         gsap.to("#preloader", {
-            opacity:0,
+            opacity: 0,
+            duration: 0.5, // Adicionado para suavizar o sumiço
             onComplete(){
                 gsap.to("#preloader", {
                     display: "none"
-                })
+                });
             }
-        })
+        });
     }
 });
 
 tl.to("#preloader path", {
     duration: 2.5,
     strokeDashoffset: 0
-})
+});
 
-tl.to ("#preloader path", {
+tl.to("#preloader path", {
     fill: "rgb(168, 19, 19)", 
     strokeDashoffset: 0
-})
+});
